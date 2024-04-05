@@ -5,9 +5,9 @@ import { CustomButton } from "./CustomButton";
 
 export function LoginForm(){
 
-    const handleForm = (event: any) => {
-        console.log(event.target[0].value, event.target[1].value);
+    const handleForm = (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
+        console.log(event.target[0].value, event.target[1].value);
     }
 
     return(
