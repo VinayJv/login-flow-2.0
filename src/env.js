@@ -8,15 +8,19 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: z
-      .string()
-      .url()
-      .refine(
-        (str) => !str.includes("YOUR_MYSQL_URL_HERE"),
-        "You forgot to change the default URL"
-      ),
+    .string()
+    .url()
+    .refine(
+      (str) => !str.includes("YOUR_MYSQL_URL_HERE"),
+      "You forgot to change the default URL"
+    ),
     NODE_ENV: z
-      .enum(["development", "test", "production"])
-      .default("development"),
+    .enum(["development", "test", "production"])
+    .default("development"),
+    GMAIL_FROM: z
+    .string(),
+    GMAIL_APP_PASSWORD: z
+    .string(),
   },
 
   /**
@@ -35,6 +39,8 @@ export const env = createEnv({
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    GMAIL_FROM: process.env.GMAIL_FROM,
+    GMAIL_APP_PASSWORD: process.env.GMAIL_APP_PASSWORD
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
