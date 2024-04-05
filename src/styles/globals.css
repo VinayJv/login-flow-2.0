@@ -109,6 +109,7 @@ form> p:last-child > span{
 
 /* Button Style */
 .button{
+  cursor: pointer;
   width: 100%;
   height: 56px;
   color: white;
