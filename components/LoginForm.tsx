@@ -4,7 +4,7 @@ import { CustomButton } from "./CustomButton";
 
 export function LoginForm(){
 
-    const handleForm = (event: any) => {
+    const handleForm = (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
         const formData = {
             email: event.target?.elements.item(0).value,

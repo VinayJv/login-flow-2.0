@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import styles from "./index.module.css"; 
 import { getAllUsers } from "utils";
 import { LoginForm } from "components/LoginForm";
