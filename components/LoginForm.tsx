@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from "react";
 import { CustomButton } from "./CustomButton";
 
 export function LoginForm(){
@@ -8,8 +7,8 @@ export function LoginForm(){
     const handleForm = (event: any) => {
         event.preventDefault();
         const formData = {
-            email: event.target.elements.item(0).value,
-            password: event.target.elements.item(1).value
+            email: event.target?.elements.item(0).value,
+            password: event.target?.elements.item(1).value
         }
         console.log(formData);
     }
