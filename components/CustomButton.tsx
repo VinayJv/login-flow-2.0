@@ -1,4 +1,4 @@
-import { CustomButtonProps } from "utils/types";
+import type { CustomButtonProps } from "utils/types";
 
 export function CustomButton({ title, handleClick, btnType }:CustomButtonProps){
     return(
