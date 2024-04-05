@@ -7,8 +7,8 @@ export function LoginForm(){
     const handleForm = (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
         const formData = {
-            email: event.target?.elements.item(0).value,
-            password: event.target?.elements.item(1).value
+            email: event.target[0].value,
+            password: event.target[1].value
         }
         console.log(formData);
     }
