@@ -20,7 +20,7 @@ export function LoginForm(){
             <p>The next gen business marketplace</p>
         </div>
         <label htmlFor="email">
-            Email<input type="text" placeholder="Enter" id="email" required></input>
+            Email<input type="email" placeholder="Enter" id="email" required></input>
         </label>
         <label htmlFor="password">
             Password<input type="password" placeholder="Enter" id="password" required></input>

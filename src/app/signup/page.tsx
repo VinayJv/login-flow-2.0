@@ -14,9 +14,11 @@ export default function SignUp() {
             password: event.target[2].value
         }
         const { createdUser } = await fetch("/api", {
-            method: 'POST', headers: {
+            method: 'POST', 
+            headers: {
                 "Content-Type": "application/json",
-            }, body: JSON.stringify(newUser)
+            },
+            body: JSON.stringify(newUser)
         }).then((data) => data.json());
         console.log(createdUser);
     }
@@ -30,7 +32,7 @@ export default function SignUp() {
                 Name<input type="text" placeholder="Enter" id="name" required></input>
             </label>
             <label htmlFor="email">
-                Email<input type="text" placeholder="Enter" id="email" required></input>
+                Email<input type="email" placeholder="Enter" id="email" required></input>
             </label>
             <label htmlFor="password">
                 Password<input type="password" placeholder="Enter" id="password" required></input>
