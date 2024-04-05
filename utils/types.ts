@@ -6,6 +6,10 @@ export interface CustomButtonProps{
     handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
+export interface FindUserProps{
+    email: string
+}
+
 export interface UserType {
         email: string;
         name: string | null;

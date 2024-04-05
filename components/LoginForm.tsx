@@ -2,12 +2,14 @@
 'use client';
 
 import { CustomButton } from "./CustomButton";
+import Link from "next/link";
 
 export function LoginForm(){
 
-    const handleForm = (event: React.BaseSyntheticEvent) => {
+    const handleForm = async (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
-        console.log(event.target[0].value, event.target[1].value);
+        const { allUsers } = await fetch("/api").then((data)=>data.json());
+        console.log(allUsers);
     }
 
     return(
@@ -15,7 +17,7 @@ export function LoginForm(){
         <div className="loginFormTitleContainer">
             <h1>Login</h1>
             <p>Welcome back to ECOMMERCE</p>
-            <p>The next gen business sign up</p>
+            <p>The next gen business marketplace</p>
         </div>
         <label htmlFor="email">
             Email<input type="text" placeholder="Enter" id="email" required></input>
@@ -25,7 +27,7 @@ export function LoginForm(){
         </label>
         <CustomButton title="Login" btnType="submit"/>
         <div className="divider"></div>
-        <p>Don't have an Account? <span>SIGN UP</span></p>
+        <p>Don't have an Account? <span><Link href={"/signup"}>SIGN UP</Link></span></p>
     </form>
     );
 }

@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import { NavBar } from "components/NavBar";
 import { UserProvider } from "context/UserContext";
+import styles from "./index.module.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +25,9 @@ export default function RootLayout({
         <body className={inter.className}>
           <NavBar />
           <UserProvider>
-            {children}
+            <main className={styles.main}>
+              {children}
+            </main>
           </UserProvider>
         </body>
       </html>

@@ -66,6 +66,7 @@ nav{
 
 /* Form Styles */
 form{
+  width: 576px;
   margin-top: 1.5rem;
   padding: 0 4rem;
   border-radius: 10px;
