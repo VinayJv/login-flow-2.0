@@ -1,11 +1,11 @@
+/* eslint-disable */
 'use client';
 
 import { CustomButton } from "./CustomButton";
 
 export function LoginForm(){
 
-    const handleForm = (event: React.BaseSyntheticEvent) => {
-        
+    const handleForm = (event: any) => {
         console.log(event.target[0].value, event.target[1].value);
         event.preventDefault();
     }
