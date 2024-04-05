@@ -1,3 +1,5 @@
+'use client';
+
 import { PropsWithChildren, createContext, useState } from "react";
 import { UserType } from "utils/types";
 

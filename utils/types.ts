@@ -1,5 +1,10 @@
-import { User } from "@prisma/client";
-import React from "react";
+import React, { MouseEventHandler } from "react";
+
+export interface CustomButtonProps{
+    title: string;
+    btnType?: 'button' | 'submit';
+    handleClick?: MouseEventHandler<HTMLButtonElement>;
+}
 
 export interface UserType {
         email: string;

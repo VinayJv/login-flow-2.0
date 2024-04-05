@@ -32,6 +32,11 @@ export function NavBar(){
                     </ul>
                 </div>
             </div>
+            <div className="nav-offers-container">
+                <span>{`<`}</span>
+                    <p>Get 10% off on business sign up</p>
+                <span>{`>`}</span>
+            </div>
         </nav>
     )
 }
