@@ -3,8 +3,10 @@
 
 import { CustomButton } from "components/CustomButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
+    const router = useRouter();
 
     const handleForm = async (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
@@ -13,14 +15,40 @@ export default function SignUp() {
             email: event.target[1].value,
             password: event.target[2].value
         }
-        const { createdUser } = await fetch("/api", {
-            method: 'POST', 
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newUser)
-        }).then((data) => data.json());
-        console.log(createdUser);
+        sessionStorage.setItem("password", Math.random().toString().substring(2, 8));
+        const message = {
+                from:"datonater0001@gmail.com",
+                to: newUser.email,
+                subject: "ECOMMERCE LOGIN ",
+                text: `Your One-Time-Password :${sessionStorage.getItem("password")}`
+        }
+        try{
+            const { createdUser } = await fetch("/api", {
+                method: 'POST', 
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newUser)
+            }).then((data) => data.json());
+            
+            if(createdUser){
+                const { status } = await fetch("/api/mailer",{
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(message)
+                }).then((data)=> data);
+    
+                if(status === 200){
+                    router.push("/verify");
+                } else {
+                    alert("Error sending mail! Try again after sometime")
+                }
+            }
+        } catch(error){
+            alert("Email Already Registered");
+        }  
     }
 
     return (

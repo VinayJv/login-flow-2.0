@@ -8,8 +8,11 @@ export function LoginForm(){
 
     const handleForm = async (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
-        const { allUsers } = await fetch("/api").then((data)=>data.json());
-        console.log(allUsers);
+        try{
+            const { allUsers } = await fetch("/api").then((data)=>data.json());   
+        } catch(error){
+            console.error(error);
+        }
     }
 
     return(

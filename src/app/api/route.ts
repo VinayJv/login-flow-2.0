@@ -13,8 +13,13 @@ export async function GET(){
 
 export async function POST(request: Request){
     const newUser = await request.json();
-    const createdUser = await prisma.user.create({
-        data: newUser
-    });
-    return NextResponse.json({ createdUser });
+    try{
+        const createdUser = await prisma.user.create({
+            data: newUser
+        });
+        return NextResponse.json({ createdUser });
+    } catch(error){
+        console.error(error);
+    }
+    
 }
