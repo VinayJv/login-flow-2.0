@@ -14,7 +14,7 @@ export default function Pagination({items, currentPage, pageSize, onPageChange}:
         <ul className="pagination">
             {pages.map((page,index)=>(
                 <li key={index} className={page === currentPage ? 'pageItemActive' : 'pageItem'}>
-                    <p onClick={()=>onPageChange(page)}>{page}</p>
+                    <p className="paginationNumber" onClick={()=>onPageChange(page)}>{page}</p>
                 </li>
             ))}
         </ul>
