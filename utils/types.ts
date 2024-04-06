@@ -21,6 +21,8 @@ export interface UserType {
 }
 
 export interface UserContextProps {
-    user: UserType,
-    setUser: React.Dispatch<React.SetStateAction<UserType>>
+    user: UserType;
+    setUser: React.Dispatch<React.SetStateAction<UserType>>;
+    userStatus: boolean;
+    setUserStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }

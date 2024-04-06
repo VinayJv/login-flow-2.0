@@ -4,9 +4,11 @@
 import { CustomButton } from "components/CustomButton";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useUserContext } from "context/UserContext";
 
 export default function SignUp() {
     const router = useRouter();
+    const { setUser, setUserStatus } = useUserContext() ?? {};
 
     const handleForm = async (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
@@ -41,6 +43,10 @@ export default function SignUp() {
                 }).then((data)=> data);
     
                 if(status === 200){
+                    if(setUser !== undefined && setUserStatus !== undefined){
+                        setUser(createdUser);
+                        setUserStatus(true);
+                    }
                     router.push("/verify");
                 } else {
                     alert("Error sending mail! Try again after sometime")
