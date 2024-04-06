@@ -94,8 +94,7 @@ export default function Dashboard() {
         }
         getAllCategories();
     }, []);
-
-    console.log(user);
+    
     return (
         <div className="categoryContainer">
             <h1>Please mark your interests!</h1>

@@ -18,8 +18,13 @@ export default function Verify(){
             userInput+= e.target.elements[i].value
         }
         if(sessionStorage.getItem("password") === userInput){
-            const { updatedUser } = await fetch(`/api/user/${user?.id}`).then((data)=>data.json())
-            if(updatedUser.verified && updatedUser.status === 200){
+            const { updatedUser, status } = await fetch(`/api/user/${user?.id}`,{
+                method: 'PUT',
+                headers: {
+                        "Content-Type": "application/json",
+                }
+            }).then((data)=>data.json())
+            if(updatedUser.verified && status === 200){
                 if(setUser !== undefined){
                     setUser(updatedUser);
                 }
