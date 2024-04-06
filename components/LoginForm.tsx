@@ -1,15 +1,37 @@
 /* eslint-disable */
 'use client';
 
+import { useUserContext } from "context/UserContext";
 import { CustomButton } from "./CustomButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export function LoginForm(){
+    const { setUser } = useUserContext() ?? {};
+    const router = useRouter();
 
     const handleForm = async (event: React.BaseSyntheticEvent) => {
         event.preventDefault();
         try{
-            const { allUsers } = await fetch("/api").then((data)=>data.json());   
+            const { foundUser, status } = await fetch(`/api/user`,{
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: event.target.elements[0].value,
+                    password: event.target.elements[1].value
+                })
+            }).then((data)=>data.json());
+            
+            if(status === 200 && foundUser.verified){
+                if(setUser !== undefined){
+                    setUser(foundUser);
+                }
+                router.push("/dashboard");
+            } else{
+                alert("Check Your Email Password");
+            }
         } catch(error){
             console.error(error);
         }

@@ -8,10 +8,10 @@ import { useLayoutEffect } from "react";
 export default function Dashboard(){
     const router = useRouter();
 
-    const { userStatus } = useUserContext() ?? {}; 
+    const { userStatus, user } = useUserContext() ?? {}; 
 
     useLayoutEffect(()=>{
-        if(!userStatus){
+        if(!userStatus && !user?.verified){
             router.push("/");
         }
     },[]);
