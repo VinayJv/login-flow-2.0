@@ -141,3 +141,49 @@ form> p:last-child > span{
   border: 1px solid #C1C1C1;
   border-radius: 5px;
 }
+
+/* Dashboard Styles */
+.categoryContainer{
+  width: 576px;
+  margin-top: 1.5rem;
+  padding: 0 4rem;
+  border-radius: 10px;
+  border: 1px solid #C1C1C1;
+}
+.categoryContainer > h1, p{
+  text-align: center;
+}
+.categories > p {
+  font-size: 20px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Pagination Component */
+.pageItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #eaeaea;
+  border-radius: 0.5rem;
+  cursor: pointer;
+ }
+ .pageItemActive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #eaeaea;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: red;
+ }
+ .pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+ }

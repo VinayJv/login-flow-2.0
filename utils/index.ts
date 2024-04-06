@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { FindUserProps } from "./types";
+import { Categories, FindUserProps } from "./types";
 
 const prisma = new PrismaClient();
 
@@ -14,3 +14,8 @@ export async function findUser({ email }: FindUserProps){
         } 
     });
 }
+
+export const paginate = (items: Categories[], pageNumber: number, pageSize: number) => {
+    const startIndex = (pageNumber - 1) * pageSize;
+    return items.slice(startIndex, startIndex + pageSize);
+};

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export function LoginForm(){
-    const { setUser } = useUserContext() ?? {};
+    const { setUser, setUserStatus } = useUserContext() ?? {};
     const router = useRouter();
 
     const handleForm = async (event: React.BaseSyntheticEvent) => {
@@ -23,10 +23,13 @@ export function LoginForm(){
                     password: event.target.elements[1].value
                 })
             }).then((data)=>data.json());
-            
+
             if(status === 200 && foundUser.verified){
                 if(setUser !== undefined){
                     setUser(foundUser);
+                    if(setUserStatus !== undefined){
+                        setUserStatus(true);
+                    }
                 }
                 router.push("/dashboard");
             } else{

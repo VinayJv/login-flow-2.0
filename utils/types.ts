@@ -26,3 +26,15 @@ export interface UserContextProps {
     userStatus: boolean;
     setUserStatus: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export type Categories = {
+    id: number,
+    name: string
+}
+
+export interface PaginationProps {
+    items: number,
+    currentPage: number,
+    pageSize: number,
+    onPageChange: (page: number) => void 
+}
