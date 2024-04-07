@@ -17,9 +17,16 @@ const tranporter = nodemailer.createTransport({
 export async function POST(request: Request){
     const message = await request.json();
     try{
-        await tranporter.sendMail(message, (err, info)=>{
-            console.log(info.envelope);
-            console.log(info.messageId)
+        await new Promise((resolve, reject)=> {
+            tranporter.sendMail(message, (err, info)=>{
+                if(err){
+                    console.error(err);
+                    reject(err);
+                } else {
+                    console.log(info);
+                    resolve(info);
+                }
+            });
         });
         return NextResponse.json({ status: 200 });
     } catch(error){
