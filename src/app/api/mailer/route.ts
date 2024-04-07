@@ -7,7 +7,7 @@ import { env } from "../../../env";
 const tranporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
-    secure: false,
+    secure: true,
     auth:{
         user: env.GMAIL_FROM,
         pass: env.GMAIL_APP_PASSWORD
