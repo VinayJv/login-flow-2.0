@@ -17,7 +17,7 @@ const tranporter = nodemailer.createTransport({
 export async function POST(request: Request){
     const message = await request.json();
     try{
-        tranporter.sendMail(message, (err, info)=>{
+        await tranporter.sendMail(message, (err, info)=>{
             console.log(info.envelope);
             console.log(info.messageId)
         });
@@ -26,3 +26,16 @@ export async function POST(request: Request){
         return NextResponse.json({ status: 500 });
     }
 }
+
+// export async function POST(request: Request){
+//     const message = await request.json();
+//     try{
+//         tranporter.sendMail(message, (err, info)=>{
+//             console.log(info.envelope);
+//             console.log(info.messageId)
+//         });
+//         return NextResponse.json({ status: 200 });
+//     } catch(error){
+//         return NextResponse.json({ status: 500 });
+//     }
+// }
